@@ -28,3 +28,21 @@ DJANGO_APPS = [
 
 
 ### URLs
+In the projects main URL file, add the following:
+```python
+from healthblip.urls import health_urls
+
+urlpatterns += health_urls
+```
+
+### Middleware
+In the projects middleware settings, add the following:
+```python
+MIDDLEWARE = [
+    "healthblip.middleware.HealthCheckMiddleware",
+    ...,
+]
+```
+
+Note that middleware ordering is taken into consideration when Django runs them, so the
+higher up you place the middleware the earlier it will be evaluated.
